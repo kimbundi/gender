@@ -1,0 +1,35 @@
+/* Button.css */
+.button {
+    background-color: #e74c3c; /* Red color to signify urgency */
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+ .button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+  }
+  
+  .button:focus {
+    outline: none;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .button {
+      font-size: 14px;
+      padding: 10px 20px;
+    }
+  }
+  
+  @media screen and (min-width: 769px) {
+    .button {
+      font-size: 18px;
+      padding: 14px 28px;
+    }
+  }
+  
