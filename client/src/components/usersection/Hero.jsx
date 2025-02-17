@@ -19,6 +19,7 @@ const Hero = () => {
               <Button/>
               
               <hr/>
+              <p  className='text-blue-600'>Search for the nearest location to find assistance</p>
 
                <Searchbar/>
 
