@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../../context/Appcontext';
 import Searchbar from '../../usersection/Searchbar';
 import { useParams } from 'react-router-dom';
-import Locationdata from './locationdata';
+import Locationdata from './Locationdata';
 
 const Genderlist = () => {
   const { navigate, allData } = useContext(AppContext);
