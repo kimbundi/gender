@@ -26,8 +26,8 @@ const Navbar = () => {
      <div className='hidden md:flex items-center gap-5 text-gray-500'>
       <div className='flex items-center gap-5'>
         { user && <>
-        <button  onClick={()=>{navigate('/admin')}}>{isAdmin ? 'Admin Dashboard' : 'Admin'}</button>
-        <Link  to={'/my-reports'} > Reports</Link>
+        <button  onClick={()=>{navigate('/admin')}}>{isAdmin ? 'Admin ' : 'Admin'}</button>
+        <Link  to={'/my-reports'} > Report  Case</Link>
         </>
         }
 
@@ -43,16 +43,16 @@ const Navbar = () => {
      <div className='md:hidden flex items-center gap-2 sm:gap-5 text-gray-500'>
       <div className='flex items-center gap-2 sm:gap-3 max-sm:text-xs'>
         {user && <>
-          <button  onClick={()=>{navigate('/admin')}}>{isAdmin ? 'Admin Dashboard' : 'Admin'}</button>
+          <button  onClick={()=>{navigate('/admin')}}>{isAdmin ? 'Admin ' : 'Admin'}</button>
 
-        <Link  to={'/my-reports'} > Reports</Link>
+        <Link  to={'/my-reports'} > Report a case</Link>
         </>
         }
       
       </div>
       {
         user ? <UserButton/> :
-        <button onClick={()=>openSignIn()}><img src={assets.usericon} alt="" /></button>
+        <button onClick={()=>openSignIn()}><img src={assets.usericon} alt="" className='w-7 h-6' /></button>
 
 
       }

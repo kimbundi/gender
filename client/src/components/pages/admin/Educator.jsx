@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 const Educator = () => {
   return (
     <div>
-      <h1>Educator page</h1>
+      <h1>Admin</h1>
 
 
       <div>
