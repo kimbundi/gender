@@ -27,6 +27,7 @@ const ProtectedRoute = ({ element }) => {
 const App = () => {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
+  const isReportRoute = location.pathname.startsWith('/my-reports')
   const { isSignedIn } = useUser();
 
   if (!isSignedIn) {
@@ -35,7 +36,7 @@ const App = () => {
 
   return (
     <div className='text-default min-h-screen bg-white'>
-      {!isAdminRoute && <Navbar />}
+      {!isAdminRoute && !isReportRoute  && <Navbar />}
      
       <Routes>
         {/* Home route: Redirect to Home if signed in */}

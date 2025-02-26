@@ -10,6 +10,12 @@ import redcross_logo from './redcross.png';
 import helmet_logo from './Helmet.png'
 import star from './star.png';
 import star_blank from './starblank.png';
+import gen1 from './gen1.png'
+import gen2 from './gen2.png'
+import gen3 from './gen3.png'
+import gen4 from './gen4.jpg'
+import gen5 from './gen5.png'
+
 
 
 
@@ -29,6 +35,11 @@ export const assets = {
     profile_img_1,
     profile_img_2,
     profile_img_3,
+    gen1,
+    gen2,
+    gen3,
+    gen4,
+    gen5
    
     
 }
@@ -57,12 +68,12 @@ export const dummyTestimonial = [
     },
 ];
 export const helpCenters = [
-    { id: 1, name: "Women's Safety Shelter", location: "Nairobi", contact: "+254 700 123 456" },
+    { id: 1, name: "Women's Safety Support", location: "Nairobi", contact: "+254 700 123 456" },
     { id: 2, name: "Gender Support Hotline", location: "Mombasa", contact: "+254 711 987 654" },
     { id: 3, name: "Child Protection Service", location: "Kisumu", contact: "+254 712 345 678" },
     { id: 4, name: "Domestic Violence Support", location: "Nakuru", contact: "+254 713 567 890" },
     { id: 5, name: "Mental Health Crisis Helpline", location: "Eldoret", contact: "+254 714 678 901" },
-    { id: 6, name: "LGBTQ+ Support Center", location: "Nyeri", contact: "+254 715 789 012" },
+    { id: 6, name: " Support Centerred", location: "Nyeri", contact: "+254 715 789 012" },
     { id: 7, name: "Human Trafficking Hotline", location: "Kericho", contact: "+254 716 890 123" },
     { id: 8, name: "Suicide Prevention Hotline", location: "Thika", contact: "+254 717 901 234" },
     { id: 9, name: "Women's Empowerment Network", location: "Meru", contact: "+254 718 012 345" },
@@ -81,10 +92,10 @@ export const helpCenters = [
     { id: 22, name: "Crisis Counseling Services", location: "Mombasa", contact: "+254 731 345 678" },
     { id: 23, name: "Sexual Harassment Support", location: "Kitui", contact: "+254 732 456 789" },
     { id: 24, name: "Legal Aid Assistance", location: "Kisii", contact: "+254 733 567 890" },
-    { id: 25, name: "Job and Employment Support", location: "Meru", contact: "+254 734 678 901" },
-    { id: 26, name: "Pregnancy Support Center", location: "Thika", contact: "+254 735 789 012" },
-    { id: 27, name: "Senior Citizen Helpline", location: "Eldoret", contact: "+254 736 890 123" },
-    { id: 28, name: "Homelessness Prevention Services", location: "Narok", contact: "+254 737 901 234" },
+    { id: 25, name: "Legal Aid Assistance", location: "Meru", contact: "+254 734 678 901" },
+    { id: 26, name: "Helpline", location: "Thika", contact: "+254 735 789 012" },
+    { id: 27, name: "Community support policy", location: "Eldoret", contact: "+254 736 890 123" },
+    { id: 28, name: "Defilement alert", location: "Narok", contact: "+254 737 901 234" },
     { id: 29, name: "Women's Health Support", location: "Kakamega", contact: "+254 738 012 345" },
     { id: 30, name: "Child Welfare Helpline", location: "Nyeri", contact: "+254 739 123 456" },
     { id: 31, name: "Disability Support Services", location: "Wajir", contact: "+254 740 234 567" },
@@ -94,11 +105,11 @@ export const helpCenters = [
     { id: 35, name: "Emergency Response Hotline", location: "Makueni", contact: "+254 744 678 901" },
     { id: 36, name: "Child Support Network", location: "Migori", contact: "+254 745 789 012" },
     { id: 37, name: "Mental Health Counseling", location: "Nandi", contact: "+254 746 890 123" },
-    { id: 38, name: "Youth Empowerment Program", location: "Laikipia", contact: "+254 747 901 234" },
-    { id: 39, name: "Elderly Support Helpline", location: "Bungoma", contact: "+254 748 012 345" },
+    { id: 38, name: "Youth mental support", location: "Laikipia", contact: "+254 747 901 234" },
+    { id: 39, name: "Mental support helpline", location: "Bungoma", contact: "+254 748 012 345" },
     { id: 40, name: "Domestic Violence Support", location: "Kilifi", contact: "+254 749 123 456" },
-    { id: 41, name: "Job Placement Services", location: "Kajiado", contact: "+254 750 234 567" },
-    { id: 42, name: "Rural Development Services", location: "Kiambu", contact: "+254 751 345 678" },
+    { id: 41, name: "Mental Health Counseling", location: "Kajiado", contact: "+254 750 234 567" },
+    { id: 42, name: "Rape Support", location: "Kiambu", contact: "+254 751 345 678" },
     { id: 43, name: "Crisis Intervention Services", location: "Nakuru", contact: "+254 752 456 789" },
     { id: 44, name: "Trauma Counseling", location: "Murang'a", contact: "+254 753 567 890" },
     { id: 45, name: "Human Rights Support", location: "Samburu", contact: "+254 754 678 901" },
