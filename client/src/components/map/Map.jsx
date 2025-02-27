@@ -26,7 +26,7 @@ const RecenterMap = ({ position }) => {
 
 const IncidentMap = ({ position }) => {
   return (
-    <div style={{ height: '400px', width: '100%' }}>
+    <div style={{ height: '200px', width: '100%' }}>
       <MapContainer center={position} zoom={13} style={{ height: '30%', width: '30%' }}>
         <TileLayer
           attribution='&copy; OpenStreetMap contributors'
