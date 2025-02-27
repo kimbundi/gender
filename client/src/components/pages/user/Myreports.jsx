@@ -1,5 +1,6 @@
 import { useState } from "react";
 import './Myreports.css';
+import IncidentMap from "../../map/Map";
 
 const ReportCaseForm = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +12,9 @@ const ReportCaseForm = () => {
     witnessDetails: "",
     confidentiality: false,
   });
+  
   const [loadingLocation, setLoadingLocation] = useState(false);
+  const [coordinates, setCoordinates] = useState([ -1.2921, 36.8219 ]); // Default to Nairobi
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -36,6 +39,7 @@ const ReportCaseForm = () => {
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const { latitude, longitude } = position.coords;
+        setCoordinates([latitude, longitude]); // Update coordinates
 
         try {
           const response = await fetch(
@@ -62,7 +66,7 @@ const ReportCaseForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitted Data:", formData);
+    console.log("Submitted Data:", formData, "Coordinates:", coordinates);
   };
 
   return (
@@ -110,6 +114,9 @@ const ReportCaseForm = () => {
           className={`input-style cursor-pointer ${loadingLocation ? "opacity-50" : ""}`}
         />
         {loadingLocation && <p className="text-sm text-gray-500">Fetching location...</p>}
+
+        
+        <IncidentMap position={coordinates} />  {/* Pass coordinates as props */}
 
         <textarea
           name="description"
