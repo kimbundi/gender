@@ -26,8 +26,8 @@ const RecenterMap = ({ position }) => {
 
 const IncidentMap = ({ position }) => {
   return (
-    <div style={{ height: '200px', width: '100%' }}>
-      <MapContainer center={position} zoom={13} style={{ height: '30%', width: '30%' }}>
+    <div style={{ height: '150px', width: '100%' }}>
+      <MapContainer center={position} zoom={13} style={{ height: '80%', width: '70%' }}>
         <TileLayer
           attribution='&copy; OpenStreetMap contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
