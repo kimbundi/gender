@@ -11,6 +11,9 @@ import Loading from './components/usersection/Loading';
 
 import Navbar from './components/usersection/Navbar';
 import Location from './components/pages/user/Location';
+import Track from './components/usersection/Track';
+import Reportid from './components/usersection/Reportid';
+
 
 // Protected Route Component
 const ProtectedRoute = ({ element }) => {
@@ -30,6 +33,7 @@ const App = () => {
 
   return (
     <div className='text-default min-h-screen bg-white'>
+
       {!isReportRoute  && <Navbar />}
      
       <Routes>
@@ -42,6 +46,9 @@ const App = () => {
         <Route path="/gender-list/:input" element={<ProtectedRoute element={<Genderlist />} />} />
         <Route path="/details/:id" element={<ProtectedRoute element={<Genderviolencedetails />} />} />
         <Route path="/my-reports" element={<ProtectedRoute element={<Myreports />} />} />
+        <Route path="/track" element={<ProtectedRoute element={<Track />} />} />
+        
+        <Route path="/reportid" element={<ProtectedRoute element={<Reportid />} />} />
         <Route path="/player/:courseId" element={<ProtectedRoute element={<Player />} />} />
         <Route path="/loading/:path" element={<ProtectedRoute element={<Loading />} />} />
 

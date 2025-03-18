@@ -1,8 +1,16 @@
-import { useState } from "react";
+import {  useState } from "react";
 import './Myreports.css';
 import IncidentMap from "../../map/Map";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+
 
 const ReportCaseForm = () => {
+  const navigate = useNavigate();
+
+  const url = "http://localhost:4000";
   const [formData, setFormData] = useState({
     caseType: "",
     date: "",
@@ -63,14 +71,70 @@ const ReportCaseForm = () => {
       }
     );
   };
-
-  const handleSubmit = (e) => {
+  const [reportId, setReportId] = useState(null);
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitted Data:", formData, "Coordinates:", coordinates);
+  
+    const formDataToSend = new FormData();
+    
+    formDataToSend.append("caseType", formData.caseType);
+    formDataToSend.append("date", formData.date);
+    formDataToSend.append("location", formData.location);
+    formDataToSend.append("description", formData.description);
+    formDataToSend.append("witnessDetails", formData.witnessDetails);
+    
+    formDataToSend.append("confidentiality", formData.confidentiality);
+  
+    // Ensure you're appending the file under the correct field name
+    if (formData.files && formData.files.length > 0) {
+      formDataToSend.append("image", formData.files[0]); // Use "image" to match backend
+    }
+  
+    try {
+      const response = await axios.post(`${url}/api/report/add`, formDataToSend, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+  
+      if (response.data.success) {
+        const submittedReportId = response.data.reportId; // Get reportId from response
+        localStorage.setItem("reportId", submittedReportId);
+        toast.success("Your report has been submiited we will follow up")
+
+        navigate("/reportid", { state: { reportId: submittedReportId } });
+      
+        alert("Report submitted successfully!");
+        
+      setTimeout(() => {
+        navigate("/");
+      }, 10000); // Waits 10 seconds before navigating
+
+        setFormData({
+          caseType: "",
+          date: "",
+          location: "",
+          description: "",
+          witnessDetails: "",
+          confidentiality: "",
+          files: null,
+        });
+      
+        
+      }
+      
+      else {
+        alert("Failed to submit report.");
+        toast.error(response.data.message)
+      }
+    } catch (error) {
+      console.error("Error submitting report:", error);
+      alert("Error submitting report. Please try again later.");
+    }
   };
+  
 
   return (
     <div className="max-w-2xl mx-auto bg-white shadow-lg p-6 rounded-lg">
+      <ToastContainer/>
       <h2 className="text-2xl font-semibold mb-4">Report a Case</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         
@@ -131,6 +195,7 @@ const ReportCaseForm = () => {
         <input
           type="file"
           name="files"
+          id="image"
           onChange={handleFileChange}
           multiple
           className="file-input-style"
