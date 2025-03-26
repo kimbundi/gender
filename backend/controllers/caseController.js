@@ -1,6 +1,7 @@
 import Case from '../models/assignedModel.js';
 import fs from 'fs';
 import { validationResult } from 'express-validator';
+import mongoose from 'mongoose';
 
 // Add a new case with investigator details
 const addCase = async (req, res) => {
@@ -107,27 +108,49 @@ const removeCase = async (req, res) => {
     }
 };
 
-// Update case status
-const updateCaseStatus = async (req, res) => {
+const getCaseStatus = async (req, res) => {
     try {
-        const { reportId, status } = req.body;
+        const { caseId } = req.query;
 
-        const validStatuses = ["Pending", "Under Investigation", "Resolved", "Closed"];
-        if (!validStatuses.includes(status)) {
-            return res.status(400).json({ success: false, message: "Invalid status update" });
+        if (!mongoose.Types.ObjectId.isValid(caseId)) {
+            return res.status(400).json({ success: false, message: "Invalid caseId" });
         }
 
-        const updatedCase = await Case.findByIdAndUpdate(reportId, { status }, { new: true });
+        // ✅ Fetch case details and include investigator
+        const caseData = await Case.findById(caseId).populate("investigator");
 
-        if (!updatedCase) {
+        if (!caseData) {
             return res.status(404).json({ success: false, message: "Case not found" });
         }
 
-        res.json({ success: true, message: "Case status updated", data: updatedCase });
+        // ✅ Prepare response data
+        let responseData = {
+            caseType: caseData.caseType,
+            date: caseData.date,
+            location: caseData.location,
+            description: caseData.description,
+            image: caseData.image,
+            confidentiality: caseData.confidentiality,
+            status: caseData.status,
+        };
+
+        // ✅ Include investigator details if available
+        if (caseData.investigator) {
+            responseData.investigator = {
+                name: caseData.investigator.name,
+                phone: caseData.investigator.phone,
+                location: caseData.investigator.location,
+                caseType: caseData.investigator.caseType,
+            };
+        }
+
+        res.json({ success: true, data: responseData });
+
     } catch (error) {
-        console.error("Error updating case status:", error);
-        res.status(500).json({ success: false, message: "Error updating case status" });
+        console.error("Error fetching case details:", error);
+        res.status(500).json({ success: false, message: "Error fetching case details" });
     }
 };
 
-export { addCase, listCases, removeCase, updateCaseStatus };
+
+export { addCase, listCases, removeCase,getCaseStatus  };

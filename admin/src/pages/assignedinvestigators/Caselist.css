@@ -1,0 +1,69 @@
+.case-list-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: "Arial", sans-serif;
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.case-list {
+    list-style: none;
+    padding: 0;
+}
+
+.case-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.case-item:hover {
+    transform: scale(1.02);
+}
+
+.case-info {
+    font-size: 16px;
+    color: #555;
+}
+
+.view-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.view-button:hover {
+    background-color: #0056b3;
+}
+
+.loading, .error {
+    text-align: center;
+    font-size: 18px;
+    color: red;
+}
+
+.case-details {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #eaf2ff;
+    border-left: 4px solid #007bff;
+    border-radius: 8px;
+}

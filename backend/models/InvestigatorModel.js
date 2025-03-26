@@ -25,6 +25,6 @@ const investigatorSchema = new mongoose.Schema({
     }
 });
 
-const investigatorModel = mongoose.models.investigator || mongoose.model("investigator", investigatorSchema);
+const investigatorModel = mongoose.models.Investigator || mongoose.model("Investigator", investigatorSchema);
 
 export default investigatorModel;

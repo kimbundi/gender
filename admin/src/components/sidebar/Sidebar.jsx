@@ -27,6 +27,11 @@ const Sidebar = () => {
                 <p>Investigators</p>
 
             </NavLink>
+            < NavLink to='/assigned' className="sidebar-option">
+                <img src={assets.order_icon} alt="" />
+                <p>Assigned Investigators</p>
+
+            </NavLink>
         </div>
 
     </div>

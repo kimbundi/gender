@@ -9,6 +9,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Investigator from './pages/investigators/investigator';
 import Listinvestigator from './pages/investigators/Listinvestigator';
+import Assigned from './pages/assignedinvestigators/Assigned';
+import CaseList from './pages/assignedinvestigators/Allcases';
 
 const App = () => {
   const url = "http://localhost:4000";
@@ -25,6 +27,7 @@ const App = () => {
             <Route path="/list" element={<Reports  url={url}/>} />
             <Route path="/cases" element={<Cases  url={url}/>} />
             <Route path="/investigate" element={<Investigator  url={url}/>} />
+            <Route path="/assigned" element={<CaseList url={url}/>} />
             <Route path="/listinvestigate" element={<Listinvestigator  url={url}/>} />
 
 

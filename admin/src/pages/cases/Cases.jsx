@@ -97,15 +97,8 @@ const CaseTracking = ({ url }) => {
         try {
             // Prepare the data to send to the backend
             const data = {
-                case: {
-                    caseType: selectedCase.caseType,
-                    date: selectedCase.date,
-                    location: selectedCase.location,
-                    description: selectedCase.description,
-                    witnessDetails: selectedCase.witnessDetails,
-                    confidentiality: selectedCase.confidentiality,
-                    image: selectedCase.image, // Assuming image URL or file path is included
-                },
+                reportId: selectedCase._id, // Ensure this is the correct case ID
+                status: "Under Investigation",
                 investigator: {
                     name: selectedInvestigator.name,
                     phone: selectedInvestigator.phone,
@@ -113,11 +106,14 @@ const CaseTracking = ({ url }) => {
                     caseType: selectedInvestigator.caseType,
                 }
             };
+            
     console.log(data)
             // Make the API request to the backend to assign the investigator and update the case
-            const response = await axios.post('http://localhost:4000/Case/add', data);
+            const response = await axios.post(`${url}/api/report/update`, data);
     
-            if (response.data.success) {
+            if (response.data.success) 
+               {
+                console.log(response)
                 toast.success("Investigator assigned successfully!");
                 setSelectedCase(null); // Close modal
                 fetchReports(); // Refetch the reports list

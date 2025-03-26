@@ -22,7 +22,7 @@ app.get("/",(req,res)=>{
 app.use("/api/report",reportRouter)
 app.use("/api/investigator",investigatorRouter)
 app.use("/images",express.static('uploads'))
-app.use("/Case",caseRouter)
+app.use("/api/case",caseRouter)
 
 app.listen(port,()=>{
     console.log(`server started on http://localhost:${port}`)

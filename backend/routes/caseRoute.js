@@ -1,5 +1,5 @@
 import express from "express";
-import { addCase, listCases, removeCase, updateCaseStatus } from "../controllers/caseController.js";
+import { addCase, getCaseStatus, listCases, removeCase} from "../controllers/caseController.js";
 
 import multer from "multer";
 
@@ -26,9 +26,9 @@ caseRouter.get("/list", listCases);
 caseRouter.post("/remove", removeCase);
 
 // Update the status of an existing case
-caseRouter.post("/update", updateCaseStatus);
+
 
 // Optional: Get the case status for a specific case (this could be another route or the same)
-caseRouter.get("/status", updateCaseStatus);
+caseRouter.get("/status", getCaseStatus);
 
 export default caseRouter;

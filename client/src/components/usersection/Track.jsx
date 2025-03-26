@@ -1,14 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
-import { Loader2, CheckCircle, XCircle, AlertTriangle, Pencil } from "lucide-react";
+import { Loader2, CheckCircle, XCircle, AlertTriangle, Pencil, User, MapPin, Phone } from "lucide-react";
 
 const TrackReports = () => {
   const [reportId, setReportId] = useState("");
   const [reportData, setReportData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [updating, setUpdating] = useState(false);
-  const [newStatus, setNewStatus] = useState("");
 
   const fetchStatus = async () => {
     if (!reportId.trim()) {
@@ -34,7 +32,6 @@ const TrackReports = () => {
     }
   };
 
-  
   const getStatusStyle = (status) => {
     switch (status) {
       case "Pending":
@@ -70,6 +67,7 @@ const TrackReports = () => {
       </div>
       {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
       {loading && <Loader2 className="w-6 h-6 animate-spin text-blue-500 mx-auto" />}
+
       {reportData && (
         <div className="mt-4 p-4 border border-gray-300 rounded-md bg-gray-50">
           <p><strong>Case Type:</strong> {reportData.caseType || "N/A"}</p>
@@ -77,8 +75,22 @@ const TrackReports = () => {
           <p><strong>Date:</strong> {reportData.date ? new Date(reportData.date).toLocaleDateString() : "N/A"}</p>
           <p><strong>Description:</strong> {reportData.description || "N/A"}</p>
           <p><strong>Witness:</strong> {reportData.witnessDetails || "N/A"}</p>
-          <p><strong>Status:</strong> <span className={`px-3 py-1 rounded-full ${getStatusStyle(reportData.status).color}`}>{getStatusStyle(reportData.status).icon} {getStatusStyle(reportData.status).text}</span></p>
-       
+          <p><strong>Status:</strong> 
+            <span className={`px-3 py-1 rounded-full ${getStatusStyle(reportData.status).color}`}>
+              {getStatusStyle(reportData.status).icon} {getStatusStyle(reportData.status).text}
+            </span>
+          </p>
+
+          {/* Show Investigation Details when status is "Under Investigation" */}
+          {reportData.status === "Under Investigation" && reportData.investigator && (
+            <div className="mt-4 p-4 border border-blue-300 bg-blue-50 rounded-md">
+              <h3 className="text-lg font-semibold text-blue-600">Investigation Details</h3>
+              <p><User className="inline w-5 h-5 mr-2" /><strong>Investigator Name:</strong> {reportData.investigator.name || "N/A"}</p>
+              <p><Phone className="inline w-5 h-5 mr-2" /><strong>Investigator Phone:</strong> {reportData.investigator.phone || "N/A"}</p>
+              <p><MapPin className="inline w-5 h-5 mr-2" /><strong>Investigator Location:</strong> {reportData.investigator.location || "N/A"}</p>
+              <p><strong>Case Type:</strong> {reportData.investigator.caseType || "N/A"}</p>
+            </div>
+          )}
         </div>
       )}
     </div>

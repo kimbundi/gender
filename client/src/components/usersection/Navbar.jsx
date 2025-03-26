@@ -13,7 +13,8 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("reportId"); // Clear reportId
-    signOut(); // Clerk sign out
+    signOut();
+    navigate('/') // Clerk sign out
   };
 
   return (

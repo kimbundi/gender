@@ -1,4 +1,4 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
 const reportSchema = new mongoose.Schema({
     caseType: {
@@ -34,13 +34,9 @@ const reportSchema = new mongoose.Schema({
         default: Date.now
     },
     status: { type: String, default: "Pending" },
-    
-    
+    investigator: { type: mongoose.Schema.Types.ObjectId, ref: "Investigator" } // ✅ Fixed reference
+});
 
-
-})
-
-
-const reportModel = mongoose.models.report ||   mongoose.model("report",reportSchema)
+const reportModel = mongoose.models.Report || mongoose.model("Report", reportSchema);
 
 export default reportModel;
