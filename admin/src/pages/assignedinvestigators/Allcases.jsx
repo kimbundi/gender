@@ -12,7 +12,7 @@ const CaseList = () => {
     useEffect(() => {
         const fetchCases = async () => {
             try {
-                const response = await axios.get("http://localhost:4000/api/case/list");
+                const response = await axios.get("https://gender-backend.onrender.com/api/case/list");
                 setCases(response.data.data);  // Store case list
             } catch (error) {
                 setError("Error fetching cases.");
@@ -50,3 +50,4 @@ const CaseList = () => {
 };
 
 export default CaseList;
+
