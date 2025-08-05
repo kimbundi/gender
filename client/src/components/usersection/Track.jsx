@@ -19,7 +19,7 @@ const TrackReports = () => {
     setReportData(null);
 
     try {
-      const response = await axios.get(`http://localhost:4000/api/report/status?reportId=${reportId}`);
+      const response = await axios.get(`https://gender-backend.onrender.com/api/report/status?reportId=${reportId}`);
       if (response.data.success) {
         setReportData(response.data.data); 
       } else {
@@ -98,3 +98,4 @@ const TrackReports = () => {
 };
 
 export default TrackReports;
+
