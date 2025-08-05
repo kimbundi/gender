@@ -10,7 +10,7 @@ const CaseDetails = ({ caseId }) => {
     useEffect(() => {
         const fetchCaseDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:4000/api/case/status?caseId=${caseId}`);
+                const response = await axios.get(`https://gender-backend.onrender.com/api/case/status?caseId=${caseId}`);
                 setCaseData(response.data.data);
             } catch (error) {
                 setError("Error fetching case details.");
@@ -48,3 +48,4 @@ const CaseDetails = ({ caseId }) => {
 };
 
 export default CaseDetails;
+
