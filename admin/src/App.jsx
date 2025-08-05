@@ -13,7 +13,7 @@ import Assigned from './pages/assignedinvestigators/Assigned';
 import CaseList from './pages/assignedinvestigators/Allcases';
 
 const App = () => {
-  const url = "http://localhost:4000";
+  const url = "https://gender-backend.onrender.com";
   return (
     <div>
       <ToastContainer/>
