@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 const ReportCaseForm = () => {
   const navigate = useNavigate();
 
-  const url = "http://localhost:4000";
+  const url = "https://gender-backend.onrender.com";
   const [formData, setFormData] = useState({
     caseType: "",
     date: "",
@@ -231,3 +231,4 @@ const ReportCaseForm = () => {
 };
 
 export default ReportCaseForm;
+
